@@ -29,25 +29,25 @@ while ($j < $num)
 	variable:
 	$id = substr($current->text, 1);
 	if ($id === 'GLOBALS' ||
-		$id === '_SERVER' ||
-		$id === '_GET' ||
-		$id === '_POST' ||
-		$id === '_FILES' ||
-		$id === '_REQUEST'||
-		$id === '_SESSION' ||
-		$id === '_ENV' ||
-		$id === '_COOKIE' ||
-		$id === 'argc' ||
-		$id === 'argv' ||
-		$id === 'this')
+	    $id === '_SERVER' ||
+	    $id === '_GET' ||
+	    $id === '_POST' ||
+	    $id === '_FILES' ||
+	    $id === '_REQUEST'||
+	    $id === '_SESSION' ||
+	    $id === '_ENV' ||
+	    $id === '_COOKIE' ||
+	    $id === 'argc' ||
+	    $id === 'argv' ||
+	    $id === 'this')
 	{
 		goto out;
 	}
 	elseif ($prev->id === T_GLOBAL ||
-			$prev->id === T_STATIC ||
-			$prev->id === T_PUBLIC ||
-			$prev->id === T_PRIVATE ||
-			$prev->id === T_PROTECTED)
+		$prev->id === T_STATIC ||
+		$prev->id === T_PUBLIC ||
+		$prev->id === T_PRIVATE ||
+		$prev->id === T_PROTECTED)
 	{
 		goto out;
 	}
@@ -61,14 +61,14 @@ while ($j < $num)
 	$first = $current->text[0];
 	$last  = $prev->text[strlen($prev->text) - 1];
 	if (($last >= 'A' && $last <= 'Z' ||
-		 $last >= 'a' && $last <= 'z' ||
-		 $last >= '0' && $last <= '9' ||
-		 $last == '_'
-		) &&
-		($first >= 'A' && $first <= 'Z' ||
-		 $first >= 'a' && $first <= 'z' ||
-		 $first >= '0' && $first <= '9' ||
-		 $first == '_' || $first == '\\'))
+             $last >= 'a' && $last <= 'z' ||
+	     $last >= '0' && $last <= '9' ||
+	     $last == '_'
+	    ) &&
+	    ($first >= 'A' && $first <= 'Z' ||
+	     $first >= 'a' && $first <= 'z' ||
+	     $first >= '0' && $first <= '9' ||
+	     $first == '_' || $first == '\\'))
 	{
 		$body .= ' ';
 	}
